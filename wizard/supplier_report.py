@@ -24,10 +24,10 @@ class CoinsamatikSupplierReport(models.TransientModel):
     _description = "Supplier report Coinsamatik"
 
     # CAMPOS PARA GENERAR EL ARCHIVO
-    datas_fname = fields.Char("File Name", size=256)
+    # datas_fname = fields.Char("File Name", size=256)
     file_data = fields.Binary("Layout")
-    download_file = fields.Boolean("Downlad file")
-    cadena_decoding = fields.Text("Binary not encoding")
+    # download_file = fields.Boolean("Downlad file")
+    # cadena_decoding = fields.Text("Binary not encoding")
 
     name = fields.Char()
     partner_id = fields.Many2one("res.partner")
@@ -37,7 +37,7 @@ class CoinsamatikSupplierReport(models.TransientModel):
     @api.onchange("start_date", "end_date")
     def calculate_dates(self):
         if self.start_date > self.end_date:
-            raise ValidationError("Date start should not be later than date end")
+            raise ValidationError(_("Date start should not be later than date end"))
 
     def print_report(self):
         xlines = []
@@ -77,36 +77,36 @@ class CoinsamatikSupplierReport(models.TransientModel):
                     cost = invoice_in_line_ids[0].price_unit
                     currency_cost = invoice_in_line_ids[0].currency_id.name
 
-                    report_fields = {
-                        "FECHA": line.invoice_date,
-                        "FACTURA": line.move_id.name,
-                        "CLIENTE": line.partner_id.name,
-                        "CIUDAD": line.partner_id.city,
-                        "NO_ARTICULO": line.product_id.default_code,
-                        "MODELO": line.product_id.name,
-                        "CANTIDAD": line.quantity,
-                        "PRECIO_UNITARIO": line.price_unit,
-                        "MONEDA_VENTA": line.currency_id.name,
-                        "COSTO_UNITARIO": cost,
-                        "MONEDA_COSTO": currency_cost,
-                        "TOTAL_VENTA": line.price_subtotal,
-                    }
-                    xlines.append(report_fields)
+                report_fields = {
+                    "FECHA": line.invoice_date,
+                    "FACTURA": line.move_id.name,
+                    "CLIENTE": line.partner_id.name,
+                    "CIUDAD": line.partner_id.city,
+                    "NO_ARTICULO": line.product_id.default_code,
+                    "MODELO": line.product_id.name,
+                    "CANTIDAD": line.quantity,
+                    "PRECIO_UNITARIO": line.price_unit,
+                    "MONEDA_VENTA": line.currency_id.name,
+                    "COSTO_UNITARIO": cost,
+                    "MONEDA_COSTO": currency_cost,
+                    "TOTAL_VENTA": line.price_subtotal,
+                }
+                xlines.append(report_fields)
 
-        columns = [
-            ["FECHA", "DATE"],
-            ["FACTURA", "CHAR"],
-            ["CLIENTE", "CHAR"],
-            ["CIUDAD", "CHAR"],
-            ["NO_ARTICULO", "CHAR"],
-            ["MODELO", "CHAR"],
-            ["CANTIDAD", "FLOAT"],
-            ["PRECIO_UNITARIO", "FLOAT"],
-            ["MONEDA_VENTA", "CHAR"],
-            ["COSTO_UNITARIO", "FLOAT"],
-            ["MONEDA_COSTO", "CHAR"],
-            ["TOTAL_VENTA", "FLOAT"],
-        ]
+        # columns = [
+        #     ["FECHA", "DATE"],
+        #     ["FACTURA", "CHAR"],
+        #     ["CLIENTE", "CHAR"],
+        #     ["CIUDAD", "CHAR"],
+        #     ["NO_ARTICULO", "CHAR"],
+        #     ["MODELO", "CHAR"],
+        #     ["CANTIDAD", "FLOAT"],
+        #     ["PRECIO_UNITARIO", "FLOAT"],
+        #     ["MONEDA_VENTA", "CHAR"],
+        #     ["COSTO_UNITARIO", "FLOAT"],
+        #     ["MONEDA_COSTO", "CHAR"],
+        #     ["TOTAL_VENTA", "FLOAT"],
+        # ]
         return self.export_xlsx_file(xlines, columns)
 
     def export_xlsx_file(self, xlines, columns):
