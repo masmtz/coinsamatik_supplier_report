@@ -1,0 +1,129 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* coinsamatik_supplier_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-08 20:18+0000\n"
+"PO-Revision-Date: 2025-03-08 20:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__cadena_decoding
+msgid "Binary not encoding"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model_terms:ir.ui.view,arch_db:coinsamatik_supplier_report.coinsamatik_supplier_report_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.ui.menu,name:coinsamatik_supplier_report.coinsamatik_main_menu_report
+msgid "Coinsamatik"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__end_date
+msgid "Date end"
+msgstr "Fecha final"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__start_date
+msgid "Date start"
+msgstr "Fecha inicial"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__download_file
+msgid "Downlad file"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__datas_fname
+msgid "File Name"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model_terms:ir.ui.view,arch_db:coinsamatik_supplier_report.coinsamatik_supplier_report_form
+msgid "Generate"
+msgstr "Generar"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__id
+msgid "ID"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__file_data
+msgid "Layout"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__name
+msgid "Name"
+msgstr ""
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model.fields,field_description:coinsamatik_supplier_report.field_coinsamatik_supplier_report__partner_id
+msgid "Partner"
+msgstr "Proveedor"
+
+#. module: coinsamatik_supplier_report
+#: model:res.groups,name:coinsamatik_supplier_report.group_supplier_report
+msgid "Supplier Report"
+msgstr "Reporte de proveedor"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.actions.act_window,name:coinsamatik_supplier_report.coinsamatik_action_supplier_report
+#: model:ir.ui.menu,name:coinsamatik_supplier_report.coinsamatik_menu_supplier_report
+#: model_terms:ir.ui.view,arch_db:coinsamatik_supplier_report.coinsamatik_supplier_report_form
+msgid "Supplier report"
+msgstr "Reporte de proveedor"
+
+#. module: coinsamatik_supplier_report
+#: model:ir.model,name:coinsamatik_supplier_report.model_coinsamatik_supplier_report
+msgid "Supplier report Coinsamatik"
+msgstr "Reporte de proveedor Coinsamatik"
+
+#. module: coinsamatik_supplier_report
+#. odoo-python
+#: code:addons/coinsamatik_supplier_report/wizard/supplier_report.py:0
+#, python-format
+msgid ""
+"The parameters provided do not generate information to complete the report, "
+"please try to modify them."
+msgstr ""
+"Los parámetros proporcionados no generan información para el reporte, "
+"por favor intente modificándolos."

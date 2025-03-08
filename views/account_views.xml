@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record model='ir.actions.act_window' id='coinsamatik_action_supplier_report'>
+            <field name="name">Supplier report</field>
+            <field name="res_model">coinsamatik.supplier.report</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Coinsamatik" id="coinsamatik_main_menu_report" parent="account.menu_finance_reports" groups="coinsamatik_supplier_report.group_supplier_report"/>
+
+        <menuitem name="Supplier report" id="coinsamatik_menu_supplier_report" parent="coinsamatik_main_menu_report"
+              action="coinsamatik_action_supplier_report" groups="coinsamatik_supplier_report.group_supplier_report"/>
+    </data>
+</odoo>

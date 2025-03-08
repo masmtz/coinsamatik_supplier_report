@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<record model='ir.ui.view' id='coinsamatik_supplier_report_form'>
+            <field name="name">coinsamatik_supplier_report_form</field>
+            <field name="model">coinsamatik.supplier.report</field>
+            <field name="arch" type="xml">
+                <form string="Supplier report">
+                     <!--<header>
+                        <field name="datas_fname" invisible="1" />
+                        <field name="download_file" invisible="1" />
+                    </header>-->
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" required="1"/>
+                                <field name="start_date" required="1"/>
+                                <field name="end_date" required="1"/>
+                            </group>
+                        </group>
+                        <!--<div attrs="{'invisible':[('download_file','=',False)]}">
+                        <div invisible="not download_file">
+                            <h2>Completed</h2>
+                            <p>Download file: <field name="file" readonly="1" filename="datas_fname"/></p>
+                        </div>-->
+                    </sheet>
+                    <footer>
+                        <button name="print_report" type="object" default_focus="1"
+                                string="Generate" class="oe_highlight"
+                                icon="fa-download"/>
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
