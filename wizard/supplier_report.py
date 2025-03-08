@@ -60,6 +60,7 @@ class CoinsamatikSupplierReport(models.TransientModel):
                 and line.product_id.seller_ids[0].partner_id == self.partner_id
             ):
                 # SEARCH THE LAST INVOICE LINE (IN_INVOICE) WITH THE PRODUCT WE ARE ITERATING TO GET THE COST
+                # WHERE THE INVOICE_DATE OF THE IN_INVOICE IS BEFORE THE INVOICE_DATE OF OUT_INVOICE
                 invoice_in_line_ids = (
                     self.env["account.move.line"]
                     .search(
@@ -67,7 +68,7 @@ class CoinsamatikSupplierReport(models.TransientModel):
                             ("move_type", "=", "in_invoice"),
                             ("product_id", "=", line.product_id.id),
                             ("parent_state", "=", "posted"),
-                            ("invoice_date", "<=", self.end_date),
+                            ("invoice_date", "<=", line.invoice_date),
                         ]
                     )
                     .sorted(key=lambda l: l.id, reverse=True)
