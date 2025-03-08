@@ -48,6 +48,7 @@ class CoinsamatikSupplierReport(models.TransientModel):
                 ("invoice_date", "<=", self.end_date),
                 ("invoice_date", ">=", self.start_date),
                 ("parent_state", "=", "posted"),
+                ("account_id", "=", self.env.ref("l10n_mx.1_cuenta401_01").id),
             ]
         )
 
