@@ -7,9 +7,8 @@ from dateutil.relativedelta import *
 from datetime import datetime
 from datetime import timedelta
 from collections import defaultdict
-from dateutil.relativedelta import relativedelta  # Importar relativedelta
+from dateutil.relativedelta import relativedelta
 
-####### TRABAJAR CON LOS EXCEL
 import base64
 import xlsxwriter
 import tempfile
@@ -23,11 +22,8 @@ class CoinsamatikSupplierReport(models.TransientModel):
     _name = "coinsamatik.supplier.report"
     _description = "Supplier report Coinsamatik"
 
-    # CAMPOS PARA GENERAR EL ARCHIVO
-    # datas_fname = fields.Char("File Name", size=256)
+    # FIELD TO GENERATE FILE
     file_data = fields.Binary("Layout")
-    # download_file = fields.Boolean("Downlad file")
-    # cadena_decoding = fields.Text("Binary not encoding")
 
     name = fields.Char()
     partner_id = fields.Many2one("res.partner")
@@ -109,9 +105,12 @@ class CoinsamatikSupplierReport(models.TransientModel):
             "%d/%m/%Y"
         )
 
-        # FORMATOS
+        # FORMATS
         header = book.add_format({"bold": True})
         header.set_bg_color("gray")
+        date_format = book.add_format({"num_format": "dd/mm/yyyy"})
+        float_format = book.add_format({"num_format": "#,##0.00"})
+        integer_format = book.add_format({"num_format": "#,##0"})
 
         sheet.write("A1", "FECHA INICIO", header)
         sheet.write("B1", start_date, header)
@@ -120,7 +119,7 @@ class CoinsamatikSupplierReport(models.TransientModel):
         sheet.write("A3", "PROVEEDOR", header)
         sheet.write("B3", self.partner_id.name, header)
 
-        # ENCABEZADO DE REPORTE
+        # REPORT HEADERS
         sheet.write("A5", "FECHA", header)
         sheet.write("B5", "FACTURA", header)
         sheet.write("C5", "CLIENTE", header)
@@ -133,10 +132,6 @@ class CoinsamatikSupplierReport(models.TransientModel):
         sheet.write("J5", "COSTO UNITARIO", header)
         sheet.write("K5", "MONEDA COSTO", header)
         sheet.write("L5", "TOTAL VENTA", header)
-
-        date_format = book.add_format({"num_format": "dd/mm/yyyy"})
-        float_format = book.add_format({"num_format": "#,##0.00"})
-        integer_format = book.add_format({"num_format": "#,##0"})
 
         if len(xlines) < 1:
             raise ValidationError(
@@ -171,7 +166,7 @@ class CoinsamatikSupplierReport(models.TransientModel):
         value = dict(
             type="ir.actions.act_url",
             target="self",
-            url="/web/content?model=%s&id=%s&field=file_data&download=true&filename=Rerpote_Proveedor.xlsx"
+            url="/web/content?model=%s&id=%s&field=file_data&download=true&filename=Reporte_Proveedor.xlsx"
             % (self._name, wiz_id.id),
         )
         return value
